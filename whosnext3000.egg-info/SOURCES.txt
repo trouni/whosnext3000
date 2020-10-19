@@ -1,0 +1,10 @@
+setup.py
+bin/whosnext3000
+whosnext3000/__init__.py
+whosnext3000/lib.py
+whosnext3000/main.py
+whosnext3000/templates.py
+whosnext3000.egg-info/PKG-INFO
+whosnext3000.egg-info/SOURCES.txt
+whosnext3000.egg-info/dependency_links.txt
+whosnext3000.egg-info/top_level.txt

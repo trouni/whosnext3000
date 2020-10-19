@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from whosnext3000.lib import run
+from whosnext3000.main import run
 
 run()
