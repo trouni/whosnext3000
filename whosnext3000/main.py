@@ -2,7 +2,7 @@ import argparse
 import curses
 import time
 from random import randint
-from whosnext3000.lib import *
+from whosnext3000.lib import load_config, get_candidates, draw, increment_student, display_history, display_lists, change_active_list
 from whosnext3000.templates import welcome_screen, spin_wheel, selected_screen
 
 
