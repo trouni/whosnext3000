@@ -24,10 +24,6 @@ $$/      $$/ $$/   $$/  $$$$$$/  $$$$$$$/        $$/   $$/  $$$$$$$/ $$/   $$/  
                                                             ::: ::   : : ::   : : ::   : : ::
 <style>cyan no-bold</style>
 '''
-    # start_x = int((width // 2) - (block_width(logo) // 2) - block_width(logo) % 2)
-    # for index, line in enumerate(logo.split('\n')):
-    #     stdscr.addstr(index, start_x, line)
-    # return logo
 
 
 def box(message):
