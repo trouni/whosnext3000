@@ -1,4 +1,5 @@
-from lib import *
+from whosnext3000.lib import load_config, center_content, add_margin, multiline_concatenate
+
 
 def logo():
     config = load_config()
@@ -29,9 +30,6 @@ $$/      $$/ $$/   $$/  $$$$$$/  $$$$$$$/        $$/   $$/  $$$$$$$/ $$/   $$/  
     # return logo
 
 
-def add_margin(string, margin):
-    return f'{string:^{margin * 2 + len(string)}}'
-
 def box(message):
     width = len(message)
     return f'''
@@ -41,6 +39,7 @@ def box(message):
 ║{' ':^{width}}║
 ╙{'─' * width}╜
 '''
+
 
 def no_box(message):
     width = len(message)
@@ -52,41 +51,34 @@ def no_box(message):
  {' ' * width} 
 '''
 
-def multiline_concatenate(paragraphs):
-    content = []
-    for paragraph in paragraphs:
-        for line_index, line in enumerate(paragraph.split('\n')):
-            try:
-                content[line_index] += line
-            except IndexError:
-                content.append(line)
-    return '\n'.join(content)
 
 def student_list(candidates, selected_index=None):
     students = [add_margin(student, 2) for student in candidates]
-    students = [f"{box(student) if student_index == selected_index else no_box(student)}" for student_index, student in enumerate(students)]
+    students = [f"{box(student) if student_index == selected_index else no_box(student)}" for student_index,
+                student in enumerate(students)]
     return multiline_concatenate(students)
+
 
 def welcome_screen(candidates):
     header = logo()
-    prompt = "Up next:\n"
+    icon = ""
+    prompt = "Up next:"
     content = student_list(candidates)
-    header, prompt, content = center_content(header, prompt, content)
-    return '\n'.join([header, prompt, content])
+    return '\n'.join(center_content(header, icon, prompt, content))
+
 
 def spin_wheel(candidates, wheel_index):
     header = logo()
-    prompt = "🎯\nPicking student..."
+    icon = "🎯"
+    prompt = "Picking student..."
     content = student_list(candidates, wheel_index % len(candidates))
-    # import ipdb; ipdb.set_trace()
-    header, prompt, content = center_content(header, prompt, content)
-    return '\n'.join([header, prompt, content])
+    return '\n'.join(center_content(header, icon, prompt, content))
+
 
 def selected_screen(candidates, index):
     header = logo()
-    prompt = f"🎉\nCongratulations, {candidates[index]}!"
+    icon = "🎉"
+    prompt = f"Congratulations, {candidates[index]}!"
     content = student_list(candidates, index % len(candidates))
     footer = "[ENTER] to confirm | [DELETE] to cancel"
-    # import ipdb; ipdb.set_trace()
-    header, prompt, content, footer = center_content(header, prompt, content, footer)
-    return '\n'.join([header, prompt, content, footer])
+    return '\n'.join(center_content(header, icon, prompt, content, footer))
