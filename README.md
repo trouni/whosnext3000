@@ -22,3 +22,4 @@ Available commands:
     whosnext3000 delete              Deletes a list
 ```
 
+You can also directly edit the lists in the config file located at `~/.whosnext3000.yml`.
