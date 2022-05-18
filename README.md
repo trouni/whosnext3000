@@ -23,3 +23,26 @@ Available commands:
 ```
 
 You can also directly edit the lists in the config file located at `~/.whosnext3000.yml`.
+
+## Example
+
+Create a list:
+```
+terminal [main] whosnext3000 create
+Name of the list > 858 Airbnb Projects
+Please enter the name of the candidates in the list.
+Leave the name empty and press [ENTER] to finish creating the list.
+Name of candidate #1 > Ninja Garage
+Name of candidate #2 > No Camp No Life
+Name of candidate #3 > Snoared
+Name of candidate #4 > Exoticals
+Name of candidate #5 > Shoes
+Name of candidate #6 >
+```
+
+Run the app:
+```
+terminal [main] whosnext3000
+```
+
+![Spin the wheel](images/spin.png)
