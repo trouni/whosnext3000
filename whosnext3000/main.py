@@ -53,6 +53,7 @@ class UI:
                     ):
                         # stdscr.addstr(0, start_x_keystr, str(selected_idx))
                         time.sleep(0.03 * (wheel_cursor // 10))
+                        print('\a')
                         draw(
                             stdscr,
                             spin_wheel(self.candidates, wheel_cursor),
