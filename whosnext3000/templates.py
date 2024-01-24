@@ -5,6 +5,7 @@ from whosnext3000.lib import (
     center_content,
     add_margin,
     multiline_concatenate,
+    batches,
 )
 
 
@@ -54,12 +55,17 @@ def no_box(message):
 
 
 def candidate_list(candidates, selected_index=None):
-    candidates = [add_margin(candidate, 2) for candidate in candidates]
-    candidates = [
-        f"{box(candidate) if candidate_index == selected_index else no_box(candidate)}"
-        for candidate_index, candidate in enumerate(candidates)
-    ]
-    return multiline_concatenate(candidates)
+    content = []
+    candidates_per_line = 8
+    for row, candidates_batch in enumerate(batches(candidates, candidates_per_line)):
+        candidates_batch = [add_margin(candidate, 2) for candidate in candidates_batch]
+        candidates_batch = [
+            f"{box(candidate) if (candidates_per_line * row + candidate_index) == selected_index else no_box(candidate)}"
+            for candidate_index, candidate in enumerate(candidates_batch)
+        ]
+        content.append(multiline_concatenate(candidates_batch))
+    
+    return "".join(content)
 
 
 def welcome_screen(candidates, draws=[]):

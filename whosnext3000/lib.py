@@ -122,3 +122,7 @@ def draw(stdscr, content, start_y, width):
         except curses.error:
             pass
     stdscr.refresh()
+
+def batches(elements, n):
+    n = max(1, n)
+    return (elements[i:i+n] for i in range(0, len(elements), n))
